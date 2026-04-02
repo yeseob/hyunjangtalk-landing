@@ -511,7 +511,7 @@ tailwind.config = {
                 </div>
 
                 <!-- State 2: 자동 알림 & 리마인드 (순차 등장) -->
-                <div class="how-mp-state flex-1 p-3 space-y-2.5" data-mpstate="2" style="display:none;min-height:260px;transition:opacity 0.4s;">
+                <div class="how-mp-state flex-1 p-3 space-y-2.5 overflow-y-auto" data-mpstate="2" style="display:none;min-height:260px;transition:opacity 0.4s;scrollbar-width:none;">
                   <div class="mseq-1" style="display:none;opacity:0;transform:translateY(10px);transition:all 0.4s;"><div class="flex gap-1.5 items-start"><div class="kakao-avatar flex items-center justify-center"><span class="text-white text-[8px] font-bold leading-none text-center">현장<br>톡</span></div><div style="width:75%;"><div class="text-[10px] text-black/50 mb-0.5">현장톡</div><div class="kakao-bubble-bot"><div class="text-xs">📬 김철수 고객에게<br>선금 안내 알림톡이<br><span class="font-semibold">발송되었습니다</span></div></div></div></div></div>
                   <div class="mseq-1" style="display:none;opacity:0;transform:translateY(10px);transition:all 0.4s;"><div class="flex gap-1.5 items-start"><div class="kakao-avatar flex items-center justify-center"><span class="text-white text-[8px] font-bold leading-none text-center">현장<br>톡</span></div><div style="width:75%;"><div class="text-[10px] text-black/50 mb-0.5">현장톡</div><div class="kakao-bubble-bot" style="border-left:3px solid #EF4444;border-radius:0 14px 14px 14px;"><div class="text-xs font-semibold" style="color:#EF4444;">⚠️ 미입금 알림</div><div class="text-[11px] text-slate-500 mt-1">김철수 중도금 600만원<br>D+3 미입금<br><span class="text-brand-purple font-semibold">리마인드 자동 발송됨</span></div><div class="flex gap-1.5 mt-1.5"><span class="flex-1 text-center py-1 bg-slate-100 text-slate-600 rounded text-[9px] font-semibold">직접 연락</span><span class="flex-1 text-center py-1 bg-slate-100 text-slate-500 rounded text-[9px] font-semibold">보류</span></div></div></div></div></div>
 
@@ -710,7 +710,7 @@ tailwind.config = {
                 </div>
 
                 <!-- Step 2: 자동 알림 + 리마인드 (순차 등장) -->
-                <div class="how-phone-state flex-1 p-3 space-y-3 overflow-hidden" data-pstate="2" style="display:none;transition:opacity 0.4s;">
+                <div class="how-phone-state flex-1 p-3 space-y-3 overflow-y-auto" data-pstate="2" style="display:none;transition:opacity 0.4s;scrollbar-width:none;">
                   <div class="dseq-1" style="display:none;opacity:0;transform:translateY(10px);transition:all 0.4s;"><div class="flex gap-1.5 items-start"><div class="kakao-avatar flex items-center justify-center"><span class="text-white text-[8px] font-bold leading-none text-center">현장<br>톡</span></div><div style="width:75%;"><div class="text-[10px] text-black/50 mb-1">현장톡</div><div class="kakao-bubble-bot"><div class="text-xs">📬 김철수 고객에게<br>선금 안내 알림톡이<br><span class="font-semibold">발송되었습니다</span></div></div></div></div></div>
                   <div class="dseq-1" style="display:none;opacity:0;transform:translateY(10px);transition:all 0.4s;"><div class="flex gap-1.5 items-start"><div class="kakao-avatar flex items-center justify-center"><span class="text-white text-[8px] font-bold leading-none text-center">현장<br>톡</span></div><div style="width:75%;"><div class="text-[10px] text-black/50 mb-1">현장톡</div><div class="kakao-bubble-bot" style="border-left:3px solid #EF4444;border-radius:0 14px 14px 14px;"><div class="text-xs font-semibold" style="color:#EF4444;">⚠️ 미입금 알림</div><div class="text-[11px] text-slate-500 mt-1">김철수 중도금 600만원<br>D+3 미입금<br><span class="text-brand-purple font-semibold">리마인드 자동 발송됨</span></div><div class="flex gap-1.5 mt-2"><span class="flex-1 text-center py-1.5 bg-slate-100 text-slate-600 rounded text-[10px] font-semibold">직접 연락</span><span class="flex-1 text-center py-1.5 bg-slate-100 text-slate-500 rounded text-[10px] font-semibold">보류</span></div></div></div></div></div>
 
@@ -1281,7 +1281,7 @@ function switchPhoneState(index) {
 }
 
 function scrollChatToBottom(el) {
-  const c = el.closest('[data-pstate="0"]') || el.closest('[data-mpstate="0"]') || el.closest('[data-pstate="1"]') || el.closest('[data-mpstate="1"]') || el.closest('[data-pstate="4"]') || el.closest('[data-mpstate="4"]');
+  const c = el.closest('[data-pstate="0"]') || el.closest('[data-mpstate="0"]') || el.closest('[data-pstate="1"]') || el.closest('[data-mpstate="1"]') || el.closest('[data-pstate="2"]') || el.closest('[data-mpstate="2"]') || el.closest('[data-pstate="4"]') || el.closest('[data-mpstate="4"]');
   if (c) setTimeout(() => c.scrollTo({ top: c.scrollHeight, behavior: 'smooth' }), 80);
 }
 
