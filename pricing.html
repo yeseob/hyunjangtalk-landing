@@ -40,27 +40,39 @@ tailwind.config = {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   }
 </style>
-<!-- Meta Pixel -->
+<!-- Tracking Pixels (KR timezone only — blocks overseas spam traffic) -->
 <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1105078901805967');
-fbq('track', 'PageView');
+(function(){
+  var isKR = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Asia/Seoul';
+  if (!isKR) return;
+
+  // GA4
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-C38SXR3WQ3';
+  document.head.appendChild(ga);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C38SXR3WQ3');
+  window.gtag = gtag;
+
+  // Meta Pixel
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1105078901805967');
+  fbq('track', 'PageView');
+
+  // Kakao Pixel
+  var kp = document.createElement('script');
+  kp.src = '//t1.daumcdn.net/kas/static/kp.js';
+  kp.onload = function(){ kakaoPixel('8295254996672491685').pageView(); };
+  document.head.appendChild(kp);
+})();
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1105078901805967&ev=PageView&noscript=1"/></noscript>
-<!-- Kakao Pixel -->
-<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
-<script type="text/javascript">kakaoPixel('8295254996672491685').pageView();</script>
-<!-- Naver Pixel (TODO: add ID) -->
-<!-- <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-<script type="text/javascript">
-if(!wcs_add) var wcs_add={};
-wcs_add["wa"] = "NAVER_PIXEL_ID";
-if(window.wcs) wcs_do();
-</script> -->
 </head>
 <body class="font-sans text-slate-900 bg-white grain antialiased">
 
