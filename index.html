@@ -6,6 +6,8 @@
 <!-- Tracking Pixels (KR timezone only — blocks overseas spam traffic) -->
 <script>
 (function(){
+  if (location.search.indexOf('notrack') > -1) localStorage.setItem('_notrack', '1');
+  if (localStorage.getItem('_notrack')) return;
   var isKR = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Asia/Seoul';
   if (!isKR) return;
 
