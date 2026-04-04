@@ -82,7 +82,8 @@ tailwind.config = {
 <body class="font-sans text-slate-900 bg-white grain antialiased">
 
 <!-- ===== NAV ===== -->
-<nav class="fixed top-0 w-full z-40 bg-white/80 backdrop-blur-xl border-b border-slate-100" style="padding-top:env(safe-area-inset-top,0px);">
+<div aria-hidden="true" style="position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:#fff;z-index:50;pointer-events:none;"></div>
+<nav class="fixed w-full z-40 bg-white/80 backdrop-blur-xl border-b border-slate-100" style="top:env(safe-area-inset-top,0px);">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <div class="flex items-center gap-2.5">
       <a href="index.html" class="flex items-center gap-2.5">
