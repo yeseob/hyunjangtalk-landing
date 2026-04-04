@@ -57,6 +57,7 @@ tailwind.config = {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-C38SXR3WQ3');
+  gtag('config', 'AW-18055785683');
   window.gtag = gtag;
 
   // Meta Pixel
@@ -430,6 +431,7 @@ function handleModalSubmit(e) {
     })
   }).then(function() {
       trackEvent('form_submit', {page: 'pricing', plan: selectedPlan});
+      gtag('event', 'conversion', {'send_to': 'AW-18055785683/YA6-CODFmpQcENPZ1aFD'});
       alert('사전등록이 완료되었습니다! 출시 시 알림을 보내드리겠습니다.');
       e.target.reset();
       closeModal();
