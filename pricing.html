@@ -155,7 +155,7 @@ tailwind.config = {
             지출 관리
           </li>
         </ul>
-        <button onclick="openModal('베이직')" class="mt-8 w-full py-3.5 rounded-xl border-2 border-brand-purple text-brand-purple font-semibold text-sm hover:bg-brand-light transition">구매하기</button>
+        <button onclick="openModal('베이직')" class="mt-8 w-full py-3.5 rounded-xl border-2 border-brand-purple text-brand-purple font-semibold text-sm hover:bg-brand-light transition">사전등록 (1개월 무료)</button>
       </div>
 
       <!-- 프로 (추천) -->
@@ -206,7 +206,7 @@ tailwind.config = {
             <span>후속 법률 관리 연계 <span class="text-white/60 text-xs">(추가 비용)</span></span>
           </li>
         </ul>
-        <button onclick="openModal('프로')" class="mt-8 w-full py-3.5 rounded-xl bg-white text-brand-purple font-semibold text-sm hover:bg-white/90 transition">구매하기</button>
+        <button onclick="openModal('프로')" class="mt-8 w-full py-3.5 rounded-xl bg-white text-brand-purple font-semibold text-sm hover:bg-white/90 transition">사전등록 (1개월 무료)</button>
       </div>
 
     </div>
@@ -358,19 +358,11 @@ tailwind.config = {
   <div class="relative bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl">
     <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition text-lg leading-none">✕</button>
     <h3 class="text-2xl font-bold mb-2">현장톡, 지금 시작하세요</h3>
-    <p class="text-slate-500 mb-6 break-keep">사전등록하시면 정식 출시 시 1개월 무료체험을 드립니다.</p>
+    <p class="text-slate-500 mb-6 break-keep">100팀+ 대기 중 · 사전등록하면 출시 즉시 <strong>1개월 무료</strong> + 우선 초대</p>
     <form class="space-y-4" onsubmit="handleModalSubmit(event)">
-      <div>
-        <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
-        <input id="reg-name" type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none transition" placeholder="홍길동">
-      </div>
       <div>
         <label class="block text-sm font-medium text-slate-700 mb-1">전화번호 <span class="text-brand-purple">*</span></label>
         <input id="reg-phone" type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none transition" placeholder="010-0000-0000">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-slate-700 mb-1">이메일 <span class="text-slate-400 font-normal">(선택)</span></label>
-        <input id="reg-email" type="email" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none transition" placeholder="example@email.com">
       </div>
       <div>
         <label class="block text-sm font-medium text-slate-700 mb-1">업종</label>
@@ -425,9 +417,7 @@ function handleModalSubmit(e) {
     mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify({
-      name: document.getElementById('reg-name').value,
       phone: document.getElementById('reg-phone').value,
-      email: document.getElementById('reg-email').value,
       trade: document.getElementById('reg-trade').value,
       plan: selectedPlan
     })
