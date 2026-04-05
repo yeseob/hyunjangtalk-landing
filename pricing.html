@@ -420,8 +420,12 @@ function handleModalSubmit(e) {
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify({ phone: phone, trade: trade, plan: selectedPlan })
   }).then(function() {}).catch(function() {}).finally(function() {
-      trackEvent('form_submit', {page: 'pricing', plan: selectedPlan});
-      gtag('event', 'conversion', {'send_to': 'AW-18055785683/YA6-CODFmpQcENPZ1aFD'});
+      try {
+        trackEvent('form_submit', {page: 'pricing', plan: selectedPlan});
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {'send_to': 'AW-18055785683/YA6-CODFmpQcENPZ1aFD'});
+        }
+      } catch(err) {}
       alert('사전등록이 완료되었습니다! 출시 시 알림을 보내드리겠습니다.');
       e.target.reset();
       closeModal();
