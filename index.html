@@ -412,7 +412,7 @@ tailwind.config = {
 </section>
 
 <!-- ===== PAIN POINT ===== -->
-<section class="py-24 bg-slate-50">
+<section id="pain" class="py-24 bg-slate-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight break-keep">이런 경험, 있으시죠?</h2>
@@ -975,7 +975,7 @@ tailwind.config = {
 </section>
 
 <!-- ===== SOCIAL PROOF ===== -->
-<section class="py-24 overflow-hidden">
+<section id="proof" class="py-24 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight break-keep">시공팀장님들의 이야기</h2>
@@ -1033,7 +1033,7 @@ tailwind.config = {
 </section>
 
 <!-- ===== BRAND STATEMENT ===== -->
-<section class="py-24 md:py-32 relative overflow-hidden" style="background: linear-gradient(135deg, #F5F3FF 0%, #F0FDFA 50%, #F8FAFC 100%);">
+<section id="brand" class="py-24 md:py-32 relative overflow-hidden" style="background: linear-gradient(135deg, #F5F3FF 0%, #F0FDFA 50%, #F8FAFC 100%);">
   <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 1px 1px, #7C3AED 1px, transparent 0); background-size: 28px 28px;"></div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal relative z-10">
     <div class="flex items-center justify-center gap-4 mb-8">
@@ -1046,7 +1046,7 @@ tailwind.config = {
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="py-20 bg-white">
+<section id="faq" class="py-20 bg-white">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12 break-keep">자주 묻는 질문</h2>
     <div class="space-y-3" id="faq-list">
@@ -1126,7 +1126,7 @@ tailwind.config = {
 </section>
 
 <!-- ===== CTA ===== -->
-<section class="py-24">
+<section id="cta" class="py-24">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
     <div class="relative rounded-3xl overflow-hidden p-12 md:p-16 text-center" style="background: linear-gradient(135deg, #7C3AED, #0891B2);">
       <div class="absolute inset-0 bg-black/10"></div>
@@ -1774,6 +1774,24 @@ function trackEvent(eventName, params) {
   // Naver (uncomment when ready)
   // if (typeof wcs === 'object' && wcs.trans) { var _c={}; _c.type='lead'; wcs.trans(_c); }
 }
+
+// Section scroll tracking
+(function() {
+  var sections = ['pain', 'how', 'features', 'proof', 'brand', 'faq', 'cta'];
+  var seen = {};
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !seen[e.target.id]) {
+        seen[e.target.id] = true;
+        trackEvent('section_view', { section: e.target.id });
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) obs.observe(el);
+  });
+})();
 </script>
 
 </body>
